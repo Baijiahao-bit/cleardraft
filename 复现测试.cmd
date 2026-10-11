@@ -1,4 +1,5 @@
 @echo off
+title ClearDraft - Verification
 setlocal
 cd /d "%~dp0"
 if not exist ".venv\Scripts\python.exe" (

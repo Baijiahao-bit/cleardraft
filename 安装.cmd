@@ -1,4 +1,5 @@
 @echo off
+title ClearDraft - Setup
 setlocal
 cd /d "%~dp0"
 where py >nul 2>nul

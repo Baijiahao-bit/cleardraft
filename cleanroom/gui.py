@@ -58,7 +58,7 @@ class DocumentApp:
         self.allow_lossy = tk.BooleanVar(root, value=False)
         self.status = tk.StringVar(root, value="请选择文件；建议先检查，再选择处理方式。")
         self._success_message = ""
-        root.title("文档清理与重建 · Doc Cleanroom")
+        root.title("净稿 · ClearDraft — 文档清理与重建")
         root.geometry("900x720")
         root.minsize(800, 650)
         root.protocol("WM_DELETE_WINDOW", self.close)

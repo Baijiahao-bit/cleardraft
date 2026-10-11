@@ -9,7 +9,7 @@ from .core import clean_document, inspect_document
 
 
 def parser() -> argparse.ArgumentParser:
-    command = argparse.ArgumentParser(description="本地文档隐藏字符/元数据检查与重建；不检测统计水印。")
+    command = argparse.ArgumentParser(description="净稿 · ClearDraft：本地文档隐藏字符/元数据检查与重建；不检测统计水印。")
     actions = command.add_subparsers(dest="action", required=True)
     inspect = actions.add_parser("inspect", help="只读检查，以 JSON 输出结果")
     inspect.add_argument("input", type=Path)

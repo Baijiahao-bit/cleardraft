@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "doc-cleanroom"
+name = "cleardraft"
 version = "0.1.0"
 description = "Local document rebuilding and bounded Unicode/metadata auditing. Not a textGrain remover."
 readme = "README.md"

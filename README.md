@@ -1,6 +1,8 @@
-# Doc Cleanroom
+# 净稿 · ClearDraft
 
-在本机检查、清理和重新导出 Word、PDF 与 UTF-8 文本，并生成可复核的审计报告。
+**Word / PDF 文档清理与重建工具。** 在本机检查、清理和重新导出文档，并生成可复核的审计报告。
+
+[项目主页](https://github.com/Baijiahao-bit/cleardraft) · [下载 ZIP](https://github.com/Baijiahao-bit/cleardraft/archive/refs/heads/main.zip) · [使用方法](docs/使用方法.md)
 
 **本工具不能检测或保证消除 OpenAI textGrain 隐形文本水印。把相同文字重新输入、复制或导出，不构成去除统计选词水印的方法。** 官方说明 textGrain 的信号来自文本选词，而不是隐藏字符或不可见空格。见 [OpenAI 官方公告](https://openai.com/index/eu-text-provenance/) 和 [来源信号 FAQ](https://help.openai.com/en/articles/8912793-provenance-signals-in-openai-generated-content)。
 
@@ -78,6 +80,6 @@ python -m pytest --cov=cleanroom --cov-report=term-missing --cov-fail-under=80
 
 ## English summary
 
-Doc Cleanroom inspects and cleans selected invisible characters and document metadata locally, and can rebuild DOCX, PDF, and UTF-8 text documents. Rebuilding can lose layout and complex content. It does **not** detect or guarantee removal of OpenAI textGrain or other statistical text watermarks. Retyping the same words is not evidence of removal. Official watermark detection is reported as `not_tested`; local cleanup checks and synthetic examples must not be presented as an official watermark test.
+ClearDraft (净稿) inspects and cleans selected invisible characters and document metadata locally, and can rebuild DOCX, PDF, and UTF-8 text documents. Rebuilding can lose layout and complex content. It does **not** detect or guarantee removal of OpenAI textGrain or other statistical text watermarks. Retyping the same words is not evidence of removal. Official watermark detection is reported as `not_tested`; local cleanup checks and synthetic examples must not be presented as an official watermark test.
 
 MIT license. See [LICENSE](LICENSE).

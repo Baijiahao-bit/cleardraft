@@ -54,10 +54,10 @@ def main():
     manifest = {path.relative_to(destination).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
                 for path in sorted(destination.rglob("*")) if path.is_file()}
     (destination / "SHA256SUMS.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8")
-    archive_path = destination / "Doc-Cleanroom-GitHub.zip"
+    archive_path = destination / "ClearDraft-GitHub.zip"
     with zipfile.ZipFile(archive_path, "x", compression=zipfile.ZIP_DEFLATED) as archive:
         for name in [*manifest, "SHA256SUMS.json"]:
-            archive.write(destination / name, "doc-cleanroom/" + name)
+            archive.write(destination / name, "cleardraft/" + name)
     print(json.dumps({"destination": str(destination), "files": len(manifest),
                       "archive": str(archive_path), "archive_sha256": hashlib.sha256(archive_path.read_bytes()).hexdigest()},
                      ensure_ascii=False, indent=2))
