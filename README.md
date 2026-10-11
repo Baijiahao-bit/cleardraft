@@ -4,7 +4,7 @@
 
 [项目主页](https://github.com/Baijiahao-bit/cleardraft) · [下载 ZIP](https://github.com/Baijiahao-bit/cleardraft/archive/refs/heads/main.zip) · [使用方法](docs/使用方法.md)
 
-**本工具能检测或保证消除 OpenAI textGrain 隐形文本水印。把相同文字重新输入、复制或导出，去除统计选词水印的方法
+**本工具能检测消除 OpenAI textGrain 隐形文本水印。把相同文字重新输入、复制或导出，去除统计选词水印的方法
 
 审计报告中的官方水印检测状态为 `not_tested`。本项目没有接入官方检测器，没有据此验证真实用户文件；演示证据只能证明本地检查项目的前后变化，不能证明“GPT 水印已去除”或“AI 检测通过”。
 
