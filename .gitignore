@@ -1,0 +1,30 @@
+# Python environment and generated caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+
+# Build products and editor settings
+build/
+dist/
+Doc-Cleanroom-GitHub.zip
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local/private inputs and ad-hoc outputs; synthetic evidence remains tracked
+private/
+input/
+output/
+inputs/
+outputs/
+.env
+.env.*
+!.env.example

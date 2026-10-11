@@ -1,0 +1,395 @@
+....................FFFFFFFFFFFFFF                                       [100%]
+================================== FAILURES ===================================
+_ test_unextracted_content_gets_lossy_marker[<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>-equations] _
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_0/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_0')
+fragment = '<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>'
+marker = 'equations'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'equations' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+_ test_unextracted_content_gets_lossy_marker[<w:sym w:font="Wingdings" w:char="F020"/>-symbol characters] _
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_1/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_1')
+fragment = '<w:sym w:font="Wingdings" w:char="F020"/>'
+marker = 'symbol characters'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'symbol characters' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+_ test_unextracted_content_gets_lossy_marker[<w:altChunk/>-alternative-format content] _
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_2/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_2')
+fragment = '<w:altChunk/>', marker = 'alternative-format content'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'alternative-format content' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+_ test_unextracted_content_gets_lossy_marker[<w:fldSimple w:instr="DATE"/>-field codes] _
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_3/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_3')
+fragment = '<w:fldSimple w:instr="DATE"/>', marker = 'field codes'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'field codes' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+_ test_unextracted_content_gets_lossy_marker[<w:footnoteReference w:id="1"/>-footnotes] _
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_4/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_4')
+fragment = '<w:footnoteReference w:id="1"/>', marker = 'footnotes'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'footnotes' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+_ test_unextracted_content_gets_lossy_marker[<w:endnoteReference w:id="1"/>-endnotes] _
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_5/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_5')
+fragment = '<w:endnoteReference w:id="1"/>', marker = 'endnotes'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'endnotes' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+_ test_unextracted_content_gets_lossy_marker[<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>-text boxes] _
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_6/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_6')
+fragment = '<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>'
+marker = 'text boxes'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'text boxes' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+______ test_unextracted_content_gets_lossy_marker[<w:drawing/>-drawings] ______
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_7/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_7')
+fragment = '<w:drawing/>', marker = 'drawings'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'drawings' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+__ test_unextracted_content_gets_lossy_marker[<w:object/>-embedded objects] ___
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_8/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_8')
+fragment = '<w:object/>', marker = 'embedded objects'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'embedded objects' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+___ test_unextracted_content_gets_lossy_marker[<w:ruby/>-ruby annotations] ____
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_9/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_9')
+fragment = '<w:ruby/>', marker = 'ruby annotations'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'ruby annotations' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+_ test_unextracted_content_gets_lossy_marker[<w:noBreakHyphen/>-special text elements] _
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_10/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_10')
+fragment = '<w:noBreakHyphen/>', marker = 'special text elements'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'special text elements' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+____ test_unextracted_content_gets_lossy_marker[<w:numPr/>-numbered lists] ____
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_11/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_unextracted_content_gets_11')
+fragment = '<w:numPr/>', marker = 'numbered lists'
+
+    @pytest.mark.parametrize("fragment,marker", [
+        ('<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>', "equations"),
+        ('<w:sym w:font="Wingdings" w:char="F020"/>', "symbol characters"),
+        ('<w:altChunk/>', "alternative-format content"),
+        ('<w:fldSimple w:instr="DATE"/>', "field codes"),
+        ('<w:footnoteReference w:id="1"/>', "footnotes"),
+        ('<w:endnoteReference w:id="1"/>', "endnotes"),
+        ('<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>', "text boxes"),
+        ('<w:drawing/>', "drawings"),
+        ('<w:object/>', "embedded objects"),
+        ('<w:ruby/>', "ruby annotations"),
+        ('<w:noBreakHyphen/>', "special text elements"),
+        ('<w:numPr/>', "numbered lists"),
+    ])
+    def test_unextracted_content_gets_lossy_marker(sample: Path, tmp_path: Path, fragment: str, marker: str) -> None:
+        path = tmp_path / "complex.docx"
+        document = f'<w:document xmlns:w="{W}"><w:body><w:p><w:r><w:t>Equation:</w:t></w:r>{fragment}</w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": document.encode()})
+>       assert marker in inspect_docx(path)["container_markers"]
+E       AssertionError: assert 'numbered lists' in ['customXml']
+
+tests\test_docx_io.py:217: AssertionError
+______________ test_tables_headers_and_footer_parts_are_reported ______________
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_tables_headers_and_footer0/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_tables_headers_and_footer0')
+
+    def test_tables_headers_and_footer_parts_are_reported(sample: Path, tmp_path: Path) -> None:
+        path = tmp_path / "notes.docx"
+        rewrite_zip(sample, path, {
+            "word/footnotes.xml": f'<w:footnotes xmlns:w="{W}"/>'.encode(),
+            "word/endnotes.xml": f'<w:endnotes xmlns:w="{W}"/>'.encode(),
+            "word/footer1.xml": f'<w:ftr xmlns:w="{W}"/>'.encode(),
+        })
+        markers = set(inspect_docx(path)["container_markers"])
+>       assert {"tables", "headers", "footers", "footnotes", "endnotes"} <= markers
+E       AssertionError: assert {'endnotes', ...rs', 'tables'} <= {'customXml'}
+E
+E         Extra items in the left set:
+E         'endnotes'
+E         'footers'
+E         'headers'
+E         'tables'
+E         'footnotes'
+
+tests\test_docx_io.py:228: AssertionError
+_______________ test_plain_document_has_no_false_lossy_markers ________________
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-14/test_plain_document_has_no_fal0')
+
+    def test_plain_document_has_no_false_lossy_markers(tmp_path: Path) -> None:
+        path = tmp_path / "plain.docx"
+        rebuild_docx("����һ��\n�ڶ���", path)
+>       assert inspect_docx(path)["container_markers"] == []
+E       AssertionError: assert ['customXml'] == []
+E
+E         Left contains one more item: 'customXml'
+E         Use -v to get more diff
+
+tests\test_docx_io.py:234: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>x=1</m:t></m:r></m:oMath>-equations]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:sym w:font="Wingdings" w:char="F020"/>-symbol characters]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:altChunk/>-alternative-format content]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:fldSimple w:instr="DATE"/>-field codes]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:footnoteReference w:id="1"/>-footnotes]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:endnoteReference w:id="1"/>-endnotes]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:txbxContent><w:p><w:r><w:t>Box text</w:t></w:r></w:p></w:txbxContent>-text boxes]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:drawing/>-drawings]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:object/>-embedded objects]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:ruby/>-ruby annotations]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:noBreakHyphen/>-special text elements]
+FAILED tests/test_docx_io.py::test_unextracted_content_gets_lossy_marker[<w:numPr/>-numbered lists]
+FAILED tests/test_docx_io.py::test_tables_headers_and_footer_parts_are_reported
+FAILED tests/test_docx_io.py::test_plain_document_has_no_false_lossy_markers
+14 failed, 20 passed in 2.58s

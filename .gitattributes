@@ -1,0 +1,6 @@
+# Preserve exact bytes for SHA256SUMS.json across platforms.
+* -text
+*.docx binary
+*.pdf binary
+*.png binary
+*.zip binary

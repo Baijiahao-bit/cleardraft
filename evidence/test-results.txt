@@ -1,0 +1,21 @@
+........................................................................ [ 73%]
+..........................                                               [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Name                    Stmts   Miss  Cover   Missing
+-----------------------------------------------------
+cleanroom\__init__.py       1      0   100%
+cleanroom\__main__.py       2      2     0%   1-3
+cleanroom\cli.py           36      3    92%   34-36
+cleanroom\core.py         139      1    99%   20
+cleanroom\docx_io.py      252     17    93%   70, 72, 104, 109, 114, 121, 128, 160, 165, 167, 175, 177, 188, 190, 211, 280, 288
+cleanroom\gui.py          141      0   100%
+cleanroom\pdf_io.py       227     15    93%   46, 80, 114-115, 117, 137, 140, 231-236, 243, 264
+cleanroom\signals.py       20      0   100%
+-----------------------------------------------------
+TOTAL                     818     38    95%
+Coverage HTML written to dir htmlcov
+Coverage JSON written to file evidence/coverage.json
+Required test coverage of 80% reached. Total coverage: 95.35%
+98 passed in 21.59s

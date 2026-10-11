@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "tool_version": "0.1.0",
+  "created_at_utc": "2026-10-11T05:02:38.703049+00:00",
+  "options": {
+    "mode": "rebuild",
+    "remove_selected_invisibles": true,
+    "allow_lossy": false
+  },
+  "before": {
+    "filename": "synthetic-input.txt",
+    "sha256": "55c65977271c4946332c01412d012ec079e49e16a5b78591bd9fda50fb91ae37",
+    "size_bytes": 130,
+    "extracted_text_length": 55,
+    "extracted_text_sha256": "55c65977271c4946332c01412d012ec079e49e16a5b78591bd9fda50fb91ae37",
+    "invisible_characters": {
+      "selected_count": 4,
+      "other_count": 0,
+      "characters": [
+        {
+          "codepoint": "U+00AD",
+          "name": "SOFT HYPHEN",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            28
+          ]
+        },
+        {
+          "codepoint": "U+200B",
+          "name": "ZERO WIDTH SPACE",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            14
+          ]
+        },
+        {
+          "codepoint": "U+2060",
+          "name": "WORD JOINER",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            21
+          ]
+        },
+        {
+          "codepoint": "U+FEFF",
+          "name": "ZERO WIDTH NO-BREAK SPACE",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            26
+          ]
+        }
+      ],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "extra_text_invisible_characters": {
+      "selected_count": 0,
+      "other_count": 0,
+      "characters": [],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "metadata_fields": [],
+    "container_markers": [],
+    "warnings": []
+  },
+  "after": {
+    "filename": "text-rebuilt.docx",
+    "sha256": "7de135a00d0005ec919b29c8d68233828ede8ed48754c7e5de9858dc7db34dca",
+    "size_bytes": 32848,
+    "extracted_text_length": 51,
+    "extracted_text_sha256": "a16d0a2298c3c7a564ebfdb1d5499a8cecc5c870636ed4870bccf4870a7ef576",
+    "invisible_characters": {
+      "selected_count": 0,
+      "other_count": 0,
+      "characters": [],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "extra_text_invisible_characters": {
+      "selected_count": 0,
+      "other_count": 0,
+      "characters": [],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "metadata_fields": [],
+    "container_markers": [],
+    "warnings": []
+  },
+  "operation": {
+    "method": "text_reconstruction",
+    "layout_preserved": false
+  },
+  "verification": {
+    "expected_text_matches": true,
+    "comparison": "Unicode codepoint order after removing all whitespace",
+    "exact_extracted_text_matches": false,
+    "expected_non_whitespace_sha256": "66e58d16f23114e794436aab135b5c5c95bca24a87499b539e5472cce4110d9f",
+    "actual_non_whitespace_sha256": "66e58d16f23114e794436aab135b5c5c95bca24a87499b539e5472cce4110d9f",
+    "selected_characters_remaining": 0,
+    "other_candidates_remaining": 0,
+    "statistical_watermark": "not_tested",
+    "ai_detector": "not_tested",
+    "visual_layout": "not_verified",
+    "conclusion": "只验证报告中列出的可观察项目，不能据此证明不存在 GPT 水印。"
+  },
+  "notes": [
+    "正文复核忽略空白字符（空格、换行、分页）；这不是视觉排版一致的证明。",
+    "重建仅保留解析器提取的文字；图片、公式、链接功能、页眉页脚等可能丢失，需人工核对。"
+  ],
+  "limitations": [
+    "这些字符只是可枚举的候选标记，出现它们不能证明文档来自 GPT。",
+    "未检测词元/词语统计水印；原文字词不变时，重新导出不能保证消除这类水印。",
+    "未调用 AI 文本检测器，也不作人类撰写或无法被 AI 检测的判断。",
+    "检查范围为解析器可提取的文字和列出的文件结构；未知标记、图像隐写及编码层标记未验证。"
+  ],
+  "openai_text_watermark": {
+    "technology": "textGrain",
+    "status": "not_tested",
+    "verdict": "unknown",
+    "reason": "未获官方文本检测器访问权限；文档重建保留措辞，不能据此判断 textGrain 已移除。",
+    "official_announcement": "https://openai.com/index/eu-text-provenance/",
+    "documentation_checked_on": "2026-10-11"
+  }
+}

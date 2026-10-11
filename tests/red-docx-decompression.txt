@@ -1,0 +1,92 @@
+.................................FFF                                     [100%]
+================================== FAILURES ===================================
+_______________ test_plain_document_has_no_false_lossy_markers ________________
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-19/test_plain_document_has_no_fal0')
+
+    def test_plain_document_has_no_false_lossy_markers(tmp_path: Path) -> None:
+        path = tmp_path / "plain.docx"
+        rebuild_docx("����һ��\n�ڶ���", path)
+>       assert inspect_docx(path)["container_markers"] == []
+E       AssertionError: assert ['equations'] == []
+E
+E         Left contains one more item: 'equations'
+E         Use -v to get more diff
+
+tests\test_docx_io.py:235: AssertionError
+_______________ test_corrupt_deflate_stream_has_friendly_error ________________
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-19/test_corrupt_deflate_stream_ha0/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-19/test_corrupt_deflate_stream_ha0')
+
+    def test_corrupt_deflate_stream_has_friendly_error(sample: Path, tmp_path: Path) -> None:
+        path = tmp_path / "bad-deflate.docx"
+        with ZipFile(sample) as archive:
+            offset = archive.getinfo("word/document.xml").header_offset
+        payload = sample.read_bytes()
+        filename_length, extra_length = struct.unpack_from("<HH", payload, offset + 26)
+        data_offset = offset + 30 + filename_length + extra_length
+        path.write_bytes(payload[:data_offset] + b"\xff\xff" + payload[data_offset + 2:])
+        with pytest.raises(ValueError, match="Invalid, encrypted, or unsupported"):
+>           inspect_docx(path)
+
+tests\test_docx_io.py:247:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+cleanroom\docx_io.py:217: in inspect_docx
+    entries, xml = _read_package(path)
+                   ^^^^^^^^^^^^^^^^^^^
+cleanroom\docx_io.py:90: in _read_package
+    entries = [(info, archive.read(info)) for info in infos]
+                      ^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py:1572: in read
+    return fp.read()
+           ^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py:978: in read
+    buf += self._read1(self.MAX_N)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <zipfile.ZipExtFile [closed]>, n = 1073741824
+
+    def _read1(self, n):
+        # Read up to n compressed bytes with at most one read() system call,
+        # decrypt and decompress them.
+        if self._eof or n <= 0:
+            return b''
+
+        # Read from file.
+        if self._compress_type == ZIP_DEFLATED:
+            ## Handle unconsumed data.
+            data = self._decompressor.unconsumed_tail
+            if n > len(data):
+                data += self._read2(n - len(data))
+        else:
+            data = self._read2(n)
+
+        if self._compress_type == ZIP_STORED:
+            self._eof = self._compress_left <= 0
+        elif self._compress_type == ZIP_DEFLATED:
+            n = max(n, self.MIN_READ_SIZE)
+>           data = self._decompressor.decompress(data, n)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           zlib.error: Error -3 while decompressing data: invalid block type
+
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\zipfile\__init__.py:1068: error
+________________ test_equation_text_is_included_in_extra_scan _________________
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-19/test_equation_text_is_included0/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-19/test_equation_text_is_included0')
+
+    def test_equation_text_is_included_in_extra_scan(sample: Path, tmp_path: Path) -> None:
+        path = tmp_path / "equation.docx"
+        xml = f'<w:document xmlns:w="{W}" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><w:body><w:p><m:oMath><m:r><m:t>x\u200b=1</m:t></m:r></m:oMath></w:p></w:body></w:document>'
+        rewrite_zip(sample, path, {"word/document.xml": xml.encode()})
+>       assert "x\u200b=1" in inspect_docx(path)["extra_text"]
+E       AssertionError: assert 'x\u200b=1' in 'ҳ\u200bü'
+
+tests\test_docx_io.py:254: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_docx_io.py::test_plain_document_has_no_false_lossy_markers
+FAILED tests/test_docx_io.py::test_corrupt_deflate_stream_has_friendly_error
+FAILED tests/test_docx_io.py::test_equation_text_is_included_in_extra_scan - ...
+3 failed, 33 passed in 2.93s

@@ -1,0 +1,15 @@
+=================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_pdf_io.py ____________________
+ImportError while importing test module '<user-home>\Documents\�Ƽ�ת���γ���ҵ\doc-cleanroom\tests\test_pdf_io.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_pdf_io.py:17: in <module>
+    from cleanroom.pdf_io import (
+E   ModuleNotFoundError: No module named 'cleanroom.pdf_io'
+=========================== short test summary info ===========================
+ERROR tests/test_pdf_io.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.23s

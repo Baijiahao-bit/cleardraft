@@ -1,0 +1,15 @@
+=================================== ERRORS ====================================
+___________________ ERROR collecting tests/test_docx_io.py ____________________
+ImportError while importing test module '<user-home>\Documents\�Ƽ�ת���γ���ҵ\doc-cleanroom\tests\test_docx_io.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_docx_io.py:10: in <module>
+    from cleanroom.docx_io import clean_docx, extract_docx, inspect_docx, rebuild_docx
+E   ModuleNotFoundError: No module named 'cleanroom.docx_io'
+=========================== short test summary info ===========================
+ERROR tests/test_docx_io.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.20s

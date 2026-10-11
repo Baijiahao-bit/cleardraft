@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "tool_version": "0.1.0",
+  "created_at_utc": "2026-10-11T05:02:38.537929+00:00",
+  "options": {
+    "mode": "preserve",
+    "remove_selected_invisibles": true,
+    "allow_lossy": false
+  },
+  "before": {
+    "filename": "synthetic-input.docx",
+    "sha256": "26e94a149c2b64178550b730e9dfc79b623ebd673cfa6c92f2ea5680e5f2424d",
+    "size_bytes": 37717,
+    "extracted_text_length": 127,
+    "extracted_text_sha256": "0f8f0aae02df13bd39690122907ded95c4b280945c8b37f4d9f1ee4689bd854a",
+    "invisible_characters": {
+      "selected_count": 4,
+      "other_count": 2,
+      "characters": [
+        {
+          "codepoint": "U+00AD",
+          "name": "SOFT HYPHEN",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            88
+          ]
+        },
+        {
+          "codepoint": "U+200B",
+          "name": "ZERO WIDTH SPACE",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            69
+          ]
+        },
+        {
+          "codepoint": "U+200C",
+          "name": "ZERO WIDTH NON-JOINER",
+          "count": 1,
+          "selected_for_removal": false,
+          "first_positions": [
+            113
+          ]
+        },
+        {
+          "codepoint": "U+200D",
+          "name": "ZERO WIDTH JOINER",
+          "count": 1,
+          "selected_for_removal": false,
+          "first_positions": [
+            103
+          ]
+        },
+        {
+          "codepoint": "U+2060",
+          "name": "WORD JOINER",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            75
+          ]
+        },
+        {
+          "codepoint": "U+FEFF",
+          "name": "ZERO WIDTH NO-BREAK SPACE",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            82
+          ]
+        }
+      ],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "extra_text_invisible_characters": {
+      "selected_count": 1,
+      "other_count": 0,
+      "characters": [
+        {
+          "codepoint": "U+200B",
+          "name": "ZERO WIDTH SPACE",
+          "count": 1,
+          "selected_for_removal": true,
+          "first_positions": [
+            6
+          ]
+        }
+      ],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "metadata_fields": [
+      "app:AppVersion",
+      "app:Application",
+      "app:Characters",
+      "app:CharactersWithSpaces",
+      "app:DocSecurity",
+      "app:HeadingPairs",
+      "app:HyperlinksChanged",
+      "app:Lines",
+      "app:LinksUpToDate",
+      "app:Pages",
+      "app:Paragraphs",
+      "app:ScaleCrop",
+      "app:SharedDoc",
+      "app:Template",
+      "app:TotalTime",
+      "app:Words",
+      "core:created",
+      "core:creator",
+      "core:description",
+      "core:lastModifiedBy",
+      "core:modified",
+      "core:revision"
+    ],
+    "container_markers": [
+      "customXml",
+      "headers",
+      "tables"
+    ],
+    "warnings": [
+      "保格式模式保留这些容器内容；其中可能仍含作者信息、隐藏文本或来源标记：customXml, headers, tables"
+    ]
+  },
+  "after": {
+    "filename": "docx-preserved.docx",
+    "sha256": "9526df1f865a192e93da82eb5abb468e4530bf02f043c7a37047a6f94d408324",
+    "size_bytes": 34771,
+    "extracted_text_length": 123,
+    "extracted_text_sha256": "c42068e4c1e4a704c033e362e216f2b219c532f372b771ff804f2d338cb9296f",
+    "invisible_characters": {
+      "selected_count": 0,
+      "other_count": 2,
+      "characters": [
+        {
+          "codepoint": "U+200C",
+          "name": "ZERO WIDTH NON-JOINER",
+          "count": 1,
+          "selected_for_removal": false,
+          "first_positions": [
+            109
+          ]
+        },
+        {
+          "codepoint": "U+200D",
+          "name": "ZERO WIDTH JOINER",
+          "count": 1,
+          "selected_for_removal": false,
+          "first_positions": [
+            99
+          ]
+        }
+      ],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "extra_text_invisible_characters": {
+      "selected_count": 0,
+      "other_count": 0,
+      "characters": [],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "metadata_fields": [],
+    "container_markers": [
+      "customXml",
+      "headers",
+      "tables"
+    ],
+    "warnings": [
+      "保格式模式保留这些容器内容；其中可能仍含作者信息、隐藏文本或来源标记：customXml, headers, tables"
+    ]
+  },
+  "operation": {
+    "method": "docx_xml_cleanup",
+    "metadata_fields": [],
+    "container_markers": [
+      "customXml",
+      "headers",
+      "tables"
+    ],
+    "warnings": [
+      "保格式模式保留这些容器内容；其中可能仍含作者信息、隐藏文本或来源标记：customXml, headers, tables"
+    ],
+    "changed_text_nodes": 2,
+    "removed_rsid_markers": 4,
+    "removed_parts": [
+      "docProps/app.xml",
+      "docProps/core.xml",
+      "docProps/thumbnail.jpeg"
+    ]
+  },
+  "verification": {
+    "expected_text_matches": true,
+    "comparison": "Unicode codepoint order after removing all whitespace",
+    "exact_extracted_text_matches": true,
+    "expected_non_whitespace_sha256": "602ab762689341bfd60f084bdc2ecf57dd9f147f2326e7aa1ff56e7138571454",
+    "actual_non_whitespace_sha256": "602ab762689341bfd60f084bdc2ecf57dd9f147f2326e7aa1ff56e7138571454",
+    "selected_characters_remaining": 0,
+    "other_candidates_remaining": 2,
+    "statistical_watermark": "not_tested",
+    "ai_detector": "not_tested",
+    "visual_layout": "not_verified",
+    "conclusion": "只验证报告中列出的可观察项目，不能据此证明不存在 GPT 水印。"
+  },
+  "notes": [
+    "正文复核忽略空白字符（空格、换行、分页）；这不是视觉排版一致的证明。"
+  ],
+  "limitations": [
+    "这些字符只是可枚举的候选标记，出现它们不能证明文档来自 GPT。",
+    "未检测词元/词语统计水印；原文字词不变时，重新导出不能保证消除这类水印。",
+    "未调用 AI 文本检测器，也不作人类撰写或无法被 AI 检测的判断。",
+    "检查范围为解析器可提取的文字和列出的文件结构；未知标记、图像隐写及编码层标记未验证。"
+  ],
+  "openai_text_watermark": {
+    "technology": "textGrain",
+    "status": "not_tested",
+    "verdict": "unknown",
+    "reason": "未获官方文本检测器访问权限；文档重建保留措辞，不能据此判断 textGrain 已移除。",
+    "official_announcement": "https://openai.com/index/eu-text-provenance/",
+    "documentation_checked_on": "2026-10-11"
+  }
+}

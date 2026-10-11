@@ -1,0 +1,38 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+___ test_backend_refuses_existing_destination_without_modifying_it[rebuild] ___
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-25/test_backend_refuses_existing_0')
+mode = 'rebuild'
+
+    @pytest.mark.parametrize("mode", ["rebuild", "metadata"])
+    def test_backend_refuses_existing_destination_without_modifying_it(tmp_path, mode):
+        source = make_pdf(tmp_path / "source.pdf")
+        destination = tmp_path / "existing.pdf"
+        sentinel = b"existing file must remain unchanged"
+        destination.write_bytes(sentinel)
+>       with pytest.raises(FileExistsError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE FileExistsError
+
+tests\test_pdf_io.py:258: Failed
+__ test_backend_refuses_existing_destination_without_modifying_it[metadata] ___
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-25/test_backend_refuses_existing_1')
+mode = 'metadata'
+
+    @pytest.mark.parametrize("mode", ["rebuild", "metadata"])
+    def test_backend_refuses_existing_destination_without_modifying_it(tmp_path, mode):
+        source = make_pdf(tmp_path / "source.pdf")
+        destination = tmp_path / "existing.pdf"
+        sentinel = b"existing file must remain unchanged"
+        destination.write_bytes(sentinel)
+>       with pytest.raises(FileExistsError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE FileExistsError
+
+tests\test_pdf_io.py:258: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_pdf_io.py::test_backend_refuses_existing_destination_without_modifying_it[rebuild]
+FAILED tests/test_pdf_io.py::test_backend_refuses_existing_destination_without_modifying_it[metadata]
+2 failed, 21 deselected in 0.24s

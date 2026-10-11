@@ -1,0 +1,112 @@
+FFFFF                                                                    [100%]
+================================== FAILURES ===================================
+_______________ test_clean_metadata_refuses_hardlink_to_source ________________
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-15/test_clean_metadata_refuses_ha0')
+
+    def test_clean_metadata_refuses_hardlink_to_source(tmp_path):
+        source = make_pdf(tmp_path / "source.pdf")
+        destination = tmp_path / "alias.pdf"
+        destination.hardlink_to(source)
+        original = source.read_bytes()
+>       with pytest.raises(ValueError, match="same|ͬ"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests\test_pdf_io.py:213: Failed
+_________ test_inspect_detects_vector_graphics_alongside_text[False] __________
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-15/test_inspect_detects_vector_gr0')
+nested = False
+
+    @pytest.mark.parametrize("nested", [False, True])
+    def test_inspect_detects_vector_graphics_alongside_text(tmp_path, nested):
+        source = tmp_path / "diagram.pdf"
+        document = canvas.Canvas(str(source))
+        document.drawString(72, 720, "Diagram:")
+        if nested:
+            document.beginForm("diagram")
+        document.rect(72, 650, 200, 40)
+        document.line(72, 650, 272, 690)
+        if nested:
+            document.endForm()
+            document.doForm("diagram")
+        document.save()
+        assert "Diagram:" in extract_pdf(source)
+>       assert "vector_graphics" in inspect_pdf(source)["container_markers"]
+E       AssertionError: assert 'vector_graphics' in []
+
+tests\test_pdf_io.py:232: AssertionError
+__________ test_inspect_detects_vector_graphics_alongside_text[True] __________
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-15/test_inspect_detects_vector_gr1')
+nested = True
+
+    @pytest.mark.parametrize("nested", [False, True])
+    def test_inspect_detects_vector_graphics_alongside_text(tmp_path, nested):
+        source = tmp_path / "diagram.pdf"
+        document = canvas.Canvas(str(source))
+        document.drawString(72, 720, "Diagram:")
+        if nested:
+            document.beginForm("diagram")
+        document.rect(72, 650, 200, 40)
+        document.line(72, 650, 272, 690)
+        if nested:
+            document.endForm()
+            document.doForm("diagram")
+        document.save()
+        assert "Diagram:" in extract_pdf(source)
+>       assert "vector_graphics" in inspect_pdf(source)["container_markers"]
+E       AssertionError: assert 'vector_graphics' in []
+
+tests\test_pdf_io.py:232: AssertionError
+_ test_inspect_detects_inline_images_and_shading[q 10 0 0 10 0 0 cm BI /W 1 /H 1 /BPC 8 /CS /RGB ID \x00\x00\x00 EI Q-images] _
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-15/test_inspect_detects_inline_im0')
+payload = b'q 10 0 0 10 0 0 cm BI /W 1 /H 1 /BPC 8 /CS /RGB ID \x00\x00\x00 EI Q'
+marker = 'images'
+
+    @pytest.mark.parametrize("payload,marker", [
+        (b"q 10 0 0 10 0 0 cm BI /W 1 /H 1 /BPC 8 /CS /RGB ID \x00\x00\x00 EI Q", "images"),
+        (b"/Sh1 sh", "vector_graphics"),
+    ])
+    def test_inspect_detects_inline_images_and_shading(tmp_path, payload, marker):
+        source = tmp_path / "graphics.pdf"
+        writer = PdfWriter()
+        page = writer.add_blank_page(width=200, height=200)
+        stream = DecodedStreamObject()
+        stream.set_data(payload)
+        page[NameObject("/Contents")] = writer._add_object(stream)
+        writer.write(source)
+>       assert marker in inspect_pdf(source)["container_markers"]
+E       AssertionError: assert 'images' in []
+
+tests\test_pdf_io.py:247: AssertionError
+___ test_inspect_detects_inline_images_and_shading[/Sh1 sh-vector_graphics] ___
+
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-15/test_inspect_detects_inline_im1')
+payload = b'/Sh1 sh', marker = 'vector_graphics'
+
+    @pytest.mark.parametrize("payload,marker", [
+        (b"q 10 0 0 10 0 0 cm BI /W 1 /H 1 /BPC 8 /CS /RGB ID \x00\x00\x00 EI Q", "images"),
+        (b"/Sh1 sh", "vector_graphics"),
+    ])
+    def test_inspect_detects_inline_images_and_shading(tmp_path, payload, marker):
+        source = tmp_path / "graphics.pdf"
+        writer = PdfWriter()
+        page = writer.add_blank_page(width=200, height=200)
+        stream = DecodedStreamObject()
+        stream.set_data(payload)
+        page[NameObject("/Contents")] = writer._add_object(stream)
+        writer.write(source)
+>       assert marker in inspect_pdf(source)["container_markers"]
+E       AssertionError: assert 'vector_graphics' in []
+
+tests\test_pdf_io.py:247: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_pdf_io.py::test_clean_metadata_refuses_hardlink_to_source
+FAILED tests/test_pdf_io.py::test_inspect_detects_vector_graphics_alongside_text[False]
+FAILED tests/test_pdf_io.py::test_inspect_detects_vector_graphics_alongside_text[True]
+FAILED tests/test_pdf_io.py::test_inspect_detects_inline_images_and_shading[q 10 0 0 10 0 0 cm BI /W 1 /H 1 /BPC 8 /CS /RGB ID \x00\x00\x00 EI Q-images]
+FAILED tests/test_pdf_io.py::test_inspect_detects_inline_images_and_shading[/Sh1 sh-vector_graphics]
+5 failed, 16 deselected in 0.29s

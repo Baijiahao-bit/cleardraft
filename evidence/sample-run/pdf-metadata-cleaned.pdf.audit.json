@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "tool_version": "0.1.0",
+  "created_at_utc": "2026-10-11T05:02:38.771042+00:00",
+  "options": {
+    "mode": "preserve",
+    "remove_selected_invisibles": true,
+    "allow_lossy": false
+  },
+  "before": {
+    "filename": "synthetic-input.pdf",
+    "sha256": "64ae20c68df1e184785077c0d881b06f314b20f4b993dd2ff301ea23bed5836d",
+    "size_bytes": 22495,
+    "extracted_text_length": 106,
+    "extracted_text_sha256": "052c7f957264f51ba378c497aba172ff6f3f315ca5f1ef77ea20a4b6877d974e",
+    "invisible_characters": {
+      "selected_count": 0,
+      "other_count": 0,
+      "characters": [],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "extra_text_invisible_characters": {
+      "selected_count": 0,
+      "other_count": 0,
+      "characters": [],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "metadata_fields": [
+      "/Author",
+      "/Title"
+    ],
+    "container_markers": [],
+    "warnings": [
+      "PDF extraction cannot prove original reading order, formulas, or layout fidelity; manually compare the source and result.",
+      "Rebuild mode reflows extracted text and discards images, vector graphics, annotations, forms, attachments, and original layout.",
+      "Metadata-only mode preserves text, hidden characters, and active content; it is not a text-watermark remover."
+    ]
+  },
+  "after": {
+    "filename": "pdf-metadata-cleaned.pdf",
+    "sha256": "5ebd21e465d57f95f2ad90593e8c7b029e72daed8dc57d491c5229c85ed2f365",
+    "size_bytes": 22392,
+    "extracted_text_length": 106,
+    "extracted_text_sha256": "052c7f957264f51ba378c497aba172ff6f3f315ca5f1ef77ea20a4b6877d974e",
+    "invisible_characters": {
+      "selected_count": 0,
+      "other_count": 0,
+      "characters": [],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "extra_text_invisible_characters": {
+      "selected_count": 0,
+      "other_count": 0,
+      "characters": [],
+      "interpretation": "candidate_characters_only_not_proof_of_watermark"
+    },
+    "metadata_fields": [],
+    "container_markers": [],
+    "warnings": [
+      "PDF extraction cannot prove original reading order, formulas, or layout fidelity; manually compare the source and result.",
+      "Rebuild mode reflows extracted text and discards images, vector graphics, annotations, forms, attachments, and original layout.",
+      "Metadata-only mode preserves text, hidden characters, and active content; it is not a text-watermark remover."
+    ]
+  },
+  "operation": {
+    "method": "pdf_metadata_only",
+    "removed_metadata_fields": [
+      "/Author",
+      "/Title"
+    ],
+    "removed_xmp_objects": 0,
+    "warnings": [
+      "Content streams and hidden text were preserved; this operation does not prove any text watermark was removed."
+    ]
+  },
+  "verification": {
+    "expected_text_matches": true,
+    "comparison": "Unicode codepoint order after removing all whitespace",
+    "exact_extracted_text_matches": true,
+    "expected_non_whitespace_sha256": "dd1b33fd39a0a8e4f1c44f40dd3581d90a303fcfc22078fb08c932a02392a1f7",
+    "actual_non_whitespace_sha256": "dd1b33fd39a0a8e4f1c44f40dd3581d90a303fcfc22078fb08c932a02392a1f7",
+    "selected_characters_remaining": 0,
+    "other_candidates_remaining": 0,
+    "statistical_watermark": "not_tested",
+    "ai_detector": "not_tested",
+    "visual_layout": "not_verified",
+    "conclusion": "只验证报告中列出的可观察项目，不能据此证明不存在 GPT 水印。"
+  },
+  "notes": [
+    "正文复核忽略空白字符（空格、换行、分页）；这不是视觉排版一致的证明。",
+    "PDF 保版模式只清理所支持的元数据，文字中的不可见字符未清理。"
+  ],
+  "limitations": [
+    "这些字符只是可枚举的候选标记，出现它们不能证明文档来自 GPT。",
+    "未检测词元/词语统计水印；原文字词不变时，重新导出不能保证消除这类水印。",
+    "未调用 AI 文本检测器，也不作人类撰写或无法被 AI 检测的判断。",
+    "检查范围为解析器可提取的文字和列出的文件结构；未知标记、图像隐写及编码层标记未验证。"
+  ],
+  "openai_text_watermark": {
+    "technology": "textGrain",
+    "status": "not_tested",
+    "verdict": "unknown",
+    "reason": "未获官方文本检测器访问权限；文档重建保留措辞，不能据此判断 textGrain 已移除。",
+    "official_announcement": "https://openai.com/index/eu-text-provenance/",
+    "documentation_checked_on": "2026-10-11"
+  }
+}

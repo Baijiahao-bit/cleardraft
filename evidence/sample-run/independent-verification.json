@@ -1,0 +1,32 @@
+{
+  "docx_expected_w_t_text_equal_including_headers": true,
+  "docx_selected_characters_before": 5,
+  "docx_selected_characters_after": 0,
+  "docx_metadata_parts_before": [
+    "docProps/app.xml",
+    "docProps/core.xml",
+    "docProps/thumbnail.jpeg"
+  ],
+  "docx_metadata_parts_after": [],
+  "docx_joiners_preserved": true,
+  "pdf_metadata_before": [
+    "/Author",
+    "/Title"
+  ],
+  "pdf_metadata_after": [],
+  "pdf_page_content_streams_identical": true,
+  "official_textGrain_detector": "NOT RUN; detection verdict remains UNKNOWN",
+  "file_sha256": {
+    "docx-preserved.docx": "9526df1f865a192e93da82eb5abb468e4530bf02f043c7a37047a6f94d408324",
+    "pdf-metadata-cleaned.pdf": "5ebd21e465d57f95f2ad90593e8c7b029e72daed8dc57d491c5229c85ed2f365",
+    "pdf-rebuilt.pdf": "08c593f9689ec9498a6abf48ecd8612c4c124eb02b873787a25014a01bd751a2",
+    "synthetic-base.pdf": "5ebd21e465d57f95f2ad90593e8c7b029e72daed8dc57d491c5229c85ed2f365",
+    "synthetic-input.docx": "26e94a149c2b64178550b730e9dfc79b623ebd673cfa6c92f2ea5680e5f2424d",
+    "synthetic-input.pdf": "64ae20c68df1e184785077c0d881b06f314b20f4b993dd2ff301ea23bed5836d",
+    "synthetic-input.txt": "55c65977271c4946332c01412d012ec079e49e16a5b78591bd9fda50fb91ae37",
+    "text-cleaned.txt": "246099cdd10b7eb9a7056ab3c9d5387169ffe9d750d531255380792d99155387",
+    "text-rebuilt.docx": "7de135a00d0005ec919b29c8d68233828ede8ed48754c7e5de9858dc7db34dca",
+    "text-rebuilt.pdf": "2419a7853329a06d608d9bca6e8c750993ba59ab2cea2014438fbd013c815d4b"
+  },
+  "observable_checks_passed": true
+}

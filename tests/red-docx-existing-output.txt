@@ -1,0 +1,38 @@
+FF                                                                       [100%]
+================================== FAILURES ===================================
+____________ test_existing_destination_is_never_overwritten[clean] ____________
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-23/test_existing_destination_is_n0/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-23/test_existing_destination_is_n0')
+operation = 'clean'
+
+    @pytest.mark.parametrize("operation", ["clean", "rebuild"])
+    def test_existing_destination_is_never_overwritten(sample: Path, tmp_path: Path, operation: str) -> None:
+        output = tmp_path / "existing.docx"
+        previous = b"existing valuable document bytes"
+        output.write_bytes(previous)
+>       with pytest.raises(FileExistsError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE FileExistsError
+
+tests\test_docx_io.py:262: Failed
+___________ test_existing_destination_is_never_overwritten[rebuild] ___________
+
+sample = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-23/test_existing_destination_is_n1/input.docx')
+tmp_path = WindowsPath('<user-home>/AppData/Local/Temp/pytest-of-jhbai/pytest-23/test_existing_destination_is_n1')
+operation = 'rebuild'
+
+    @pytest.mark.parametrize("operation", ["clean", "rebuild"])
+    def test_existing_destination_is_never_overwritten(sample: Path, tmp_path: Path, operation: str) -> None:
+        output = tmp_path / "existing.docx"
+        previous = b"existing valuable document bytes"
+        output.write_bytes(previous)
+>       with pytest.raises(FileExistsError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE FileExistsError
+
+tests\test_docx_io.py:262: Failed
+=========================== short test summary info ===========================
+FAILED tests/test_docx_io.py::test_existing_destination_is_never_overwritten[clean]
+FAILED tests/test_docx_io.py::test_existing_destination_is_never_overwritten[rebuild]
+2 failed, 36 deselected in 0.36s

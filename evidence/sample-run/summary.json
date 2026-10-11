@@ -1,0 +1,96 @@
+{
+  "fixture_origin": "人工合成测试数据；不是经 OpenAI 确认的 textGrain 水印样本。",
+  "results": [
+    {
+      "input": "synthetic-input.docx",
+      "output": "docx-preserved.docx",
+      "selected_characters_before": 4,
+      "selected_characters_after": 0,
+      "metadata_fields_before": [
+        "app:AppVersion",
+        "app:Application",
+        "app:Characters",
+        "app:CharactersWithSpaces",
+        "app:DocSecurity",
+        "app:HeadingPairs",
+        "app:HyperlinksChanged",
+        "app:Lines",
+        "app:LinksUpToDate",
+        "app:Pages",
+        "app:Paragraphs",
+        "app:ScaleCrop",
+        "app:SharedDoc",
+        "app:Template",
+        "app:TotalTime",
+        "app:Words",
+        "core:created",
+        "core:creator",
+        "core:description",
+        "core:lastModifiedBy",
+        "core:modified",
+        "core:revision"
+      ],
+      "metadata_fields_after": [],
+      "text_comparison_passed": true,
+      "textGrain": "not_tested"
+    },
+    {
+      "input": "synthetic-input.txt",
+      "output": "text-cleaned.txt",
+      "selected_characters_before": 4,
+      "selected_characters_after": 0,
+      "metadata_fields_before": [],
+      "metadata_fields_after": [],
+      "text_comparison_passed": true,
+      "textGrain": "not_tested"
+    },
+    {
+      "input": "synthetic-input.txt",
+      "output": "text-rebuilt.docx",
+      "selected_characters_before": 4,
+      "selected_characters_after": 0,
+      "metadata_fields_before": [],
+      "metadata_fields_after": [],
+      "text_comparison_passed": true,
+      "textGrain": "not_tested"
+    },
+    {
+      "input": "synthetic-input.txt",
+      "output": "text-rebuilt.pdf",
+      "selected_characters_before": 4,
+      "selected_characters_after": 0,
+      "metadata_fields_before": [],
+      "metadata_fields_after": [],
+      "text_comparison_passed": true,
+      "textGrain": "not_tested"
+    },
+    {
+      "input": "synthetic-input.pdf",
+      "output": "pdf-metadata-cleaned.pdf",
+      "selected_characters_before": 0,
+      "selected_characters_after": 0,
+      "metadata_fields_before": [
+        "/Author",
+        "/Title"
+      ],
+      "metadata_fields_after": [],
+      "text_comparison_passed": true,
+      "textGrain": "not_tested"
+    },
+    {
+      "input": "synthetic-input.pdf",
+      "output": "pdf-rebuilt.pdf",
+      "selected_characters_before": 0,
+      "selected_characters_after": 0,
+      "metadata_fields_before": [
+        "/Author",
+        "/Title"
+      ],
+      "metadata_fields_after": [],
+      "text_comparison_passed": true,
+      "textGrain": "not_tested"
+    }
+  ],
+  "official_detector_run": false,
+  "conclusion": "只能确认列出的字符和元数据处理结果，不能证明 textGrain 不可识别。"
+}
